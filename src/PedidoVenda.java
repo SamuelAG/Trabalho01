@@ -33,7 +33,6 @@ public class PedidoVenda {
 
     @Override
     public String toString() {
-        float soma = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String dataFormatada = formato.format(this.data);
         for(int i = 0;i<itens.size();i++){
@@ -53,30 +52,6 @@ public class PedidoVenda {
         System.out.printf("Valor do Pedido: %.2f\n",veiculo.getValor() + this.valorPedido);
         System.out.printf("Comissão do Vendedor: %.2f\n",(veiculo.getValor() + this.valorPedido)/vendedor.getComissão());
         return super.toString();
-}
-
-
-
-    public void status(){
-        float soma = 0;
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        String dataFormatada = formato.format(this.data);
-        for(int i = 0;i<itens.size();i++){
-            soma += itens.get(i).getValorItem();
-        }
-        System.out.println("\t\t\t\t\t\t  PEDIDO DE VENDA");
-        System.out.println("Numero do Pedido: " + getCodigo() + "\t\t\t\t\t\t\t\tData do Pedido: " + dataFormatada);
-        System.out.println("Cliente: " + cliente.getNome());
-        System.out.println("Vendedor: " + vendedor.getNome());
-        System.out.printf("Veiculo: %s   Valor: %.2f\n",veiculo.getDescricao(),veiculo.getValor());
-        System.out.println("-------------------------Itens do Pedido--------------------");
-        System.out.println("#Item  Descrição\t\t\t\t\t\t\t\t\tQtd   -Valor Unitario-      -Valor Item-");
-        for(int i =0 ;i<itens.size();i++){
-            System.out.printf("%5d  %-30s\t\t\t\t  %-3d %15.2f   %15.2f\n",itens.get(i).getSequencial(),itens.get(i).getProduto().getDescricao(),itens.get(i).getQuantidade(),itens.get(i).getProduto().getValorProduto(),itens.get(i).getValorItem());
-        }
-        System.out.println("-----------------------------------------------------------------------------------------------");
-        System.out.printf("Valor do Pedido: %.2f\n",veiculo.getValor() + soma);
-        System.out.printf("Comissão do Vendedor: %.2f\n",(veiculo.getValor() + soma)/10);
     }
 
     public int getCodigo() {
